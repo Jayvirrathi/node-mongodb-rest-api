@@ -5,7 +5,11 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import helmet from 'helmet';
 const userRoutes = require('./routes/userRoutes');
-const middlewares = require('./middlewares');
+const postsRoutes = require('./routes/postsRoutes');
+const commentsRoutes = require('./routes/commentsRoutes');
+const middlewares = require('./middleware/middlewares');
+
+const ErrorResponse = require('./middleware/ErrorResponse');
 
 dotenv.config();
 
@@ -21,14 +25,14 @@ const options = {
 
 const startServer = async () => {
   const app = express();
-  app.use(cors());
-  app.use(express.json());
-  await mongoose.connect('mongodb://localhost:27017/test4', options);
+
+  await mongoose.connect(process.env.MONGO_URI, options);
 
   app.use(morgan('dev'));
   app.use(helmet());
   app.use(cors());
   app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
 
   app.get('/', (req, res) => {
     res.json({
@@ -36,14 +40,17 @@ const startServer = async () => {
     });
   });
 
+  app.use(ErrorResponse);
   app.use('/user', userRoutes);
+  app.use('/posts', postsRoutes);
+  app.use('/comments', commentsRoutes);
 
   app.listen({ port }, () =>
     console.log(`🚀 Server ready at http://localhost:${port}`)
   );
 
-  //   app.use(middlewares.notFound);
-  //   app.use(middlewares.errorHandler);
+  app.use(middlewares.notFound);
+  app.use(middlewares.errorHandler);
 };
 
 startServer();

@@ -1,6 +1,6 @@
-# REST API with Node.js, MongoDB
+# REST API with Node.js, MongoDB, JWT
 
-> A Basic Node.js project
+> Blog Node.js project
 
 ## Build Setup
 
@@ -20,26 +20,111 @@ npm start
 
 **Request:**
 
-```json
-POST user/create
+### User
+
+```
+POST user/register
+{
+    "name": "Elon",
+    "email": "elon@tesla.com",
+    "password": "elon@1234",
+    "role": "author"
+}
+```
+
+```
+POST user/login
+{
+    "email": "elon@tesla.com",
+    "password": "elon@1234"
+}
+```
+
+## Authorization
+
+### Post
+
+```
+POST posts/
 
 {
-    "firstName": "Elon",
-    "lastName": "Musk",
-    "email": "elon@tesla.com"
+    "postTitle": "Deno",
+    "postBody": "New Nodejs Framework",
+    "genre": "tech"
 }
+```
 
-PUT user/:id
+```
+PUT posts/:id
 {
-    "firstName": "Elon",
-    "lastName": "Musk",
-    "email": "elonmusk@tesla.com"
+    "postTitle": "Deno",
+    "postBody": "New Nodejs Framework by Nodejs Creator",
+    "genre": "tech"
 }
+```
+
+```
+
+GET posts/
+
+GET posts/?page=1&limit=1
+
+GET posts/:id
+
+DELETE posts/:id
+```
+
+### Comments
+
+```
+POST comments/
+{
+    "postId": "603b77052fbc1c1038573518",
+    "commentText": "Nice"
+}
+```
+
+```
+PUT comments/:id
+{
+    "postTitle": "Deno",
+    "postBody": "New Nodejs Framework by Nodejs Creator",
+    "genre": "tech"
+}
+```
+
+```
+
+GET comments/
 
 
-GET user/getUsers
+GET comments/:id
 
-GET user/:id
+DELETE comments/:id
+```
 
-DELETE user/:id
+### Create Admin User
+
+```
+POST user/register
+{
+    "name": "admin",
+    "email": "admin@tesla.com",
+    "password": "admin@1234",
+    "role": "admin"
+}
+```
+
+```
+POST user/login
+{
+   "email": "admin@tesla.com",
+    "password": "admin@1234"
+}
+```
+
+### Admin Authorization
+
+```
+GET user/
 ```
