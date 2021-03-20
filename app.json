@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name"           : "my-app",
+      "script"         : "dist/index.js",
+      "exec_mode"      : "fork",
+      "instances"      : 1,
+      "env_development": {
+        "PORT": "4000",
+      "MONGO_URI": "mongodb://localhost:27017/blogrest",
+      "JWT_SECRET": "hello_world_test",
+      "JWT_EXPIRE": "7d"
+	 },
+      "env_production" : {
+      "PORT": "4000",
+      "MONGO_URI": "mongodb://localhost:27017/blogrest_prod",
+      "JWT_SECRET": "hello_world_test",
+      "JWT_EXPIRE": "7d"
+      }
+    }
+  ]
+}
