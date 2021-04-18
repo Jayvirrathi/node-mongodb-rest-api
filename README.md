@@ -36,7 +36,7 @@ npm run build
 ```
 # serve at http://localhost:4000/
 
-pm2:dev
+npm run pm2:dev
 ```
 
 ## prod
@@ -44,7 +44,7 @@ pm2:dev
 ```
 # serve at http://localhost:4000/
 
-pm2:prod
+npm run pm2:prod
 
 ```
 
@@ -150,7 +150,7 @@ DELETE comments/:id
 
 ```
 
-POST user/register
+POST admin/register
 {
 "name": "admin",
 "email": "admin@tesla.com",
@@ -162,7 +162,7 @@ POST user/register
 
 ```
 
-POST user/login
+POST admin/login
 {
 "email": "admin@tesla.com",
 "password": "admin@1234"
@@ -174,6 +174,6 @@ POST user/login
 
 ```
 
-GET user/
+GET admin/users
 
 ```

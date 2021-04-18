@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/index.js",
-    "dev": "nodemon --exec babel-node src/index.js",
+    "start": "nodemon --exec ./node_modules/.bin/babel-node src/index.js",
+    "dev": "nodemon --exec ./node_modules/.bin/babel-node src/index.js",
     "build": "babel src/ -d dist/",
-	"pm2:dev":"pm2 start app.json --env development",
-	"pm2:prod":"pm2 start app.json --env production"
+    "pm2:dev": "pm2 start app.json --env development",
+    "pm2:prod": "pm2 start app.json --env production"
   },
   "repository": {
     "type": "git",
@@ -26,19 +26,19 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "helmet": "^4.4.1",
+    "helmet": "^4.5.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.15",
+    "mongoose": "^5.12.4",
     "morgan": "^1.10.0",
-    "swagger-jsdoc": "^6.0.2",
+    "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.13",
-    "@babel/core": "^7.12.13",
-    "@babel/node": "^7.12.13",
-    "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/preset-env": "^7.12.13",
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
     "nodemon": "^2.0.7"
   }
 }
