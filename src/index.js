@@ -17,19 +17,11 @@ const ErrorResponse = require('./middleware/ErrorResponse');
 dotenv.config();
 
 const port = process.env.PORT || 4000;
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  bufferCommands: false,
-  bufferMaxEntries: 0,
-  useFindAndModify: false,
-  useCreateIndex: true
-};
 
 const startServer = async () => {
   const app = express();
 
-  await mongoose.connect(process.env.MONGO_URI, options);
+  await mongoose.connect(process.env.MONGO_URI);
 
   app.use(morgan('dev'));
   app.use(helmet());

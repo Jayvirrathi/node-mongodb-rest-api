@@ -54,6 +54,7 @@ exports.login = tryCatch(async (req, res, next) => {
 
   res.status(201).json({
     success: true,
-    token
+    token,
+    userId: user._id
   });
 });
